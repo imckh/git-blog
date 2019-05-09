@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>git-blog-service</artifactId>
+    <artifactId>git-blog-starter</artifactId>
 
     <dependencies>
         <dependency>
@@ -20,6 +20,16 @@
         <dependency>
             <groupId>com.imckh</groupId>
             <artifactId>git-blog-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.imckh</groupId>
+            <artifactId>git-blog-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.imckh</groupId>
+            <artifactId>git-blog-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
