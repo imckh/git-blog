@@ -10,8 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 @Log4j2
 public class ResultTestService implements IResultTestService {
+    private IResultTestDao resultTestDao;
+
     @Autowired
-    IResultTestDao resultTestDao;
+    public ResultTestService(IResultTestDao resultTestDao) {
+        this.resultTestDao = resultTestDao;
+    }
 
     @Override
     public Result testResult(String name) {

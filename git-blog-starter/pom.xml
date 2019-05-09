@@ -27,10 +27,5 @@
             <artifactId>git-blog-service</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.imckh</groupId>
-            <artifactId>git-blog-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 </project>

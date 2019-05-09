@@ -8,14 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@Log4j2
+//@RestController
+//@Log4j2
 public class HelloController {
-    @Autowired
-    private IResultTestService resultTestService;
-
-    @GetMapping("hello")
-    public Result hello(@RequestParam("name") String name) {
-        return resultTestService.testResult(name);
-    }
+//    private IResultTestService resultTestService;
+//
+//    @Autowired
+//    public void setResultTestService(IResultTestService resultTestService) {
+//        this.resultTestService = resultTestService;
+//    }
+//
+//    @GetMapping("hello")
+//    public Result hello(@RequestParam("name") String name) {
+//        return resultTestService.testResult(name);
+//    }
 }
