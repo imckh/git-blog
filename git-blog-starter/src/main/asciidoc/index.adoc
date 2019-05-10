@@ -1,0 +1,12 @@
+= Git blog
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+
+将git仓库转为博客
+
+== /hello: Say "Hello World!"
+
+operation::hello[]
+include::{snippets}/hello/curl-request.adoc[]
+include::{snippets}/hello/http-request.adoc[]

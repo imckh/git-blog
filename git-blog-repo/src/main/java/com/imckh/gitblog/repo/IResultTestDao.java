@@ -1,4 +1,4 @@
-package com.imckh.gitblog.dao;
+package com.imckh.gitblog.repo;
 
 import com.imckh.gitblog.model.Result;
 

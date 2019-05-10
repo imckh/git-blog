@@ -1,6 +1,6 @@
 package com.imckh.gitblog.service.impl;
 
-import com.imckh.gitblog.dao.IResultTestDao;
+import com.imckh.gitblog.repo.IResultTestDao;
 import com.imckh.gitblog.model.Result;
 import com.imckh.gitblog.service.IResultTestService;
 import lombok.extern.log4j.Log4j2;

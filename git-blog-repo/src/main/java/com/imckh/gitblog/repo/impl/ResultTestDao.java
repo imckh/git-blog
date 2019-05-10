@@ -1,6 +1,6 @@
-package com.imckh.gitblog.dao.impl;
+package com.imckh.gitblog.repo.impl;
 
-import com.imckh.gitblog.dao.IResultTestDao;
+import com.imckh.gitblog.repo.IResultTestDao;
 import com.imckh.gitblog.model.Result;
 import org.springframework.stereotype.Component;
 

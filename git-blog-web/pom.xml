@@ -14,21 +14,21 @@
     <name>git-blog-web</name>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.imckh</groupId>
             <artifactId>git-blog-model</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.imckh</groupId>
-            <artifactId>git-blog-dao</artifactId>
+            <artifactId>git-blog-repo</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.imckh</groupId>
             <artifactId>git-blog-service</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
 </project>
