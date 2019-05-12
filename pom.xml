@@ -23,13 +23,19 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <start-class>com.imckh.gitblog.GitBlogApplication</start-class>
+
+        <springboot.version>2.1.4.RELEASE</springboot.version>
         <junit.jupiter.version>5.5.0-M1</junit.jupiter.version>
         <surefire.version>3.0.0-M3</surefire.version>
         <disruptor.version>3.4.2</disruptor.version>
         <junit.platform.version>1.3.2</junit.platform.version>
-        <springfox.version>2.6.1</springfox.version>
-        <org.apache.maven.version>3.1.0</org.apache.maven.version>
-        <start-class>com.imckh.gitblog.GitBlogApplication</start-class>
+        <!-- 暂时不用spring restdocs
+        <asciidoctor.version>2.0.0-RC.1</asciidoctor.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>-->
+        <springfox.version>2.9.2</springfox.version>
     </properties>
 
     <dependencies>
@@ -50,6 +56,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springboot.version}</version>
             <exclusions>
                 <exclusion>
                     <!-- spring 默认不是 log4j2 -->
@@ -61,11 +68,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
+            <version>${springboot.version}</version>
         </dependency>
         <!-- Add Log4j2 Dependency -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>${springboot.version}</version>
         </dependency>
         <!-- Needed for Async Logging with Log4j 2 -->
         <dependency>
@@ -78,6 +87,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${springboot.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>junit</groupId>
@@ -86,29 +96,34 @@
             </exclusions>
             <scope>test</scope>
         </dependency>
+
+<!--    集成 Swagger UI-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+<!--    集成 Swagger2-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+
+
+        <!--   暂时不用 Spring Restdocs-->
+        <!--
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
     </dependencies>
 
     <build>
         <plugins>
-            <!--<plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>${start-class}</mainClass>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
+
         </plugins>
     </build>
 

@@ -1,5 +1,6 @@
 package com.imckh.gitblog.controller;
 
+/*
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,20 +23,21 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+*/
 
-@SpringBootTest
+/*@SpringBootTest
 @AutoConfigureMockMvc
-@ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
+@ExtendWith({RestDocumentationExtension.class, SpringExtension.class})*/
 public class HelloControllerTest {
-    //@Autowired
+/*
     private MockMvc mockMvc;
 
-    /**
+    *//**
      * 配置 Spring REST Docs
      * 1. 在 @ExtendWith 中增加 RestDocumentationExtension (JUnit5 的 Extension 相当于 JUnit4 中的 Rule)
      * 2. 将 MockMvc 由直接注入改为手动构建，增加 documentationConfiguration(restDocumentation) 配置
      * 3. 在执行测试的最后，调用 andDo(document("hello")) 给测试调用所生成的文档命名
-     */
+     *//*
     @BeforeEach
     public void setUp(WebApplicationContext webApplicationContext,
                       RestDocumentationContextProvider restDocumentation) {
@@ -57,5 +59,5 @@ public class HelloControllerTest {
                                 fieldWithPath("code").description("Code of the response"),
                                 fieldWithPath("msg").description("Message of the response"))
                 ));
-    }
+    }*/
 }

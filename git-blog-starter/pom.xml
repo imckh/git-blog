@@ -31,14 +31,16 @@
 
     <build>
         <plugins>
+            <!-- 暂时不用spring-restdocs
             <plugin>
+&lt;!&ndash;                使用Spring REST Docs的第一步是配置项目的构建&ndash;&gt;
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>2.0.0-RC.1</version>
-<!--                                <version>1.6.0</version>-->
+                <version>${asciidoctor.version}</version>
                 <executions>
                     <execution>
                         <id>generate-docs</id>
+&lt;!&ndash;                        mvn package 的时候构建文档&ndash;&gt;
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>process-asciidoc</goal>
@@ -51,7 +53,6 @@
                                 <toc>left</toc>
                                 <icons>font</icons>
                                 <sectanchors>true</sectanchors>
-                                <!-- set the idprefix to blank -->
                                 <idprefix/>
                             </attributes>
                         </configuration>
@@ -59,6 +60,9 @@
                 </executions>
                 <dependencies>
                     <dependency>
+&lt;!&ndash;                    添加spring-restdocs-asciidoctor作为Asciidoctor插件的依赖项。
+                        这将自动配置片段属性，以便在.adoc文件中使用以指向target/generated-snippets
+                        这步操作允许使用operation操作&ndash;&gt;
                         <groupId>org.springframework.restdocs</groupId>
                         <artifactId>spring-restdocs-asciidoctor</artifactId>
                         <version>${spring-restdocs.version}</version>
@@ -66,8 +70,9 @@
                 </dependencies>
             </plugin>
             <plugin>
+                &lt;!&ndash;将生成的文档打包到项目的jar文件中，例如将其作为Spring Boot的静态内容&ndash;&gt;
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.7</version>
+                <version>${maven-resources-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>copy-resources</id>
@@ -90,11 +95,16 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
+                <!--
+                但目前为止 mvn test 命令只会测试 JUnit 4 的测试用例，
+                若要让 Maven 识别出所有的测试用例还得加上一个构建插件配置
+                -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <dependencies>
