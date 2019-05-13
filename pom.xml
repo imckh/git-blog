@@ -36,6 +36,7 @@
         <asciidoctor.version>2.0.0-RC.1</asciidoctor.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>-->
         <springfox.version>2.9.2</springfox.version>
+        <apache.httpcomponents.version>4.5.8</apache.httpcomponents.version>
     </properties>
 
     <dependencies>
@@ -110,6 +111,11 @@
             <version>${springfox.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${apache.httpcomponents.version}</version>
+        </dependency>
 
         <!--   暂时不用 Spring Restdocs-->
         <!--
@@ -136,4 +142,19 @@
         <module>git-blog-starter</module>
     </modules>
 
+    <repositories>
+        <repository>
+            <!-- 使用阿里云的仓库 -->
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
