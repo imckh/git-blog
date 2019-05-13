@@ -12,95 +12,20 @@
     <artifactId>git-blog-starter</artifactId>
 
     <dependencies>
-        <!--<dependency>
-            <groupId>com.imckh</groupId>
-            <artifactId>git-blog-model</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.imckh</groupId>
-            <artifactId>git-blog-repo</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.imckh</groupId>
-            <artifactId>git-blog-service</artifactId>
-            <version>${project.version}</version>
-        </dependency>-->
         <dependency>
             <groupId>com.imckh</groupId>
             <artifactId>git-blog-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.imckh</groupId>
+            <artifactId>git-blog-core</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- 暂时不用spring-restdocs
-            <plugin>
-&lt;!&ndash;                使用Spring REST Docs的第一步是配置项目的构建&ndash;&gt;
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>${asciidoctor.version}</version>
-                <executions>
-                    <execution>
-                        <id>generate-docs</id>
-&lt;!&ndash;                        mvn package 的时候构建文档&ndash;&gt;
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                        <configuration>
-                            <backend>html</backend>
-                            <doctype>book</doctype>
-                            <sourceHighlighter>prettify</sourceHighlighter>
-                            <attributes>
-                                <toc>left</toc>
-                                <icons>font</icons>
-                                <sectanchors>true</sectanchors>
-                                <idprefix/>
-                            </attributes>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-&lt;!&ndash;                    添加spring-restdocs-asciidoctor作为Asciidoctor插件的依赖项。
-                        这将自动配置片段属性，以便在.adoc文件中使用以指向target/generated-snippets
-                        这步操作允许使用operation操作&ndash;&gt;
-                        <groupId>org.springframework.restdocs</groupId>
-                        <artifactId>spring-restdocs-asciidoctor</artifactId>
-                        <version>${spring-restdocs.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                &lt;!&ndash;将生成的文档打包到项目的jar文件中，例如将其作为Spring Boot的静态内容&ndash;&gt;
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven-resources-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>
-                                ${project.build.outputDirectory}/static/docs
-                            </outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>
-                                        ${project.build.directory}/generated-docs
-                                    </directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
