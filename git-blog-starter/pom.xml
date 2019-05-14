@@ -22,6 +22,11 @@
             <artifactId>git-blog-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.imckh</groupId>
+            <artifactId>git-blog-web</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
