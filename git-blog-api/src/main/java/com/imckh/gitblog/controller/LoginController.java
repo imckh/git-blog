@@ -1,63 +1,61 @@
 package com.imckh.gitblog.controller;
 
-import com.imckh.gitblog.model.User;
-import com.imckh.gitblog.model.http.ResponseBo;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import com.imckh.gitblog.model.http.ResultMap;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@Api(tags = "登录相关接口(not REST api)", value = "登录相关接口(这个不是REST api)")
+@RestController
 public class LoginController {
-
-    @ApiOperation(value="用户登录", notes="跳转到用户登录 Action")
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+    private final ResultMap resultMap;
+    @Autowired
+    public LoginController(ResultMap resultMap) {
+        this.resultMap = resultMap;
     }
 
-    @ApiOperation(value="用户登录", notes="用户登录")
-    @PostMapping("/login")
-    @ResponseBody
-    public ResponseBo login(String username, String password) {
-        // FIXME 2019-05-14 18:03:57 暂时明文密码
-        // password = MD5Utils.encrypt(username, password);
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+    @RequestMapping(value = "/notLogin", method = RequestMethod.GET)
+    public ResultMap notLogin() {
+        return resultMap.success().message("您尚未登陆！");
+    }
+
+    @RequestMapping(value = "/notRole", method = RequestMethod.GET)
+    public ResultMap notRole() {
+        return resultMap.success().message("您没有权限！");
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ResultMap logout() {
         Subject subject = SecurityUtils.getSubject();
-        try {
-            subject.login(token);
-            return ResponseBo.ok();
-        } catch (UnknownAccountException e) {
-            return ResponseBo.error(e.getMessage());
-        } catch (IncorrectCredentialsException e) {
-            return ResponseBo.error(e.getMessage());
-        } catch (LockedAccountException e) {
-            return ResponseBo.error(e.getMessage());
-        } catch (AuthenticationException e) {
-            return ResponseBo.error("认证失败！");
+        subject.logout();
+        return resultMap.success().message("成功注销！");
+    }
+
+    /**
+     * 登陆
+     *
+     * @param username 用户名
+     * @param password 密码
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResultMap login(String username, String password) {
+        // 从SecurityUtils里边创建一个 subject
+        Subject subject = SecurityUtils.getSubject();
+        // 在认证提交前准备 token（令牌）
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        // 执行认证登陆
+        subject.login(token);
+        //根据权限，指定返回数据
+        String role = username.startsWith("i") ? "admin" : "user";
+        if ("user".equals(role)) {
+            return resultMap.success().message("欢迎登陆");
         }
-    }
-
-    @ApiOperation(value="默认跳转到主页", notes="默认跳转到主页")
-    @RequestMapping("/")
-    public String redirectIndex() {
-        return "redirect:/index";
-    }
-
-    @ApiOperation(value="登录后跳转到主页", notes="登录后跳转到主页")
-    @RequestMapping("/index")
-    public String index(Model model) {
-        User user = (User) SecurityUtils.getSubject().getPrincipal();
-        model.addAttribute("user", user);
-        return "index";
+        if ("admin".equals(role)) {
+            return resultMap.success().message("欢迎来到管理员页面");
+        }
+        return resultMap.fail().message("权限错误！");
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
         "com.imckh.gitblog.controller",
         "com.imckh.gitblog.service",
         "com.imckh.gitblog.util",
+        "com.imckh.gitblog.model",
         "com.imckh.gitblog.repo"})
 public class GitBlogApplication {
     private static ApplicationContext context = null;

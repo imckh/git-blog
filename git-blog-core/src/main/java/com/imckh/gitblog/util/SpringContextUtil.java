@@ -28,8 +28,8 @@ public class SpringContextUtil implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext)
             throws BeansException {
-        this.context = applicationContext;
-        environment = this.context.getEnvironment();
+        context = applicationContext;
+        environment = context.getEnvironment();
     }
 
 
@@ -63,18 +63,6 @@ public class SpringContextUtil implements ApplicationContextAware {
      */
     public static String getPort() {
         return environment.getProperty("server.port");
-    }
-
-    public static boolean isProd() {
-        return environment.acceptsProfiles(PROD);
-    }
-
-    public static boolean isDev() {
-        return environment.acceptsProfiles(DEV);
-    }
-
-    public static boolean isTest() {
-        return environment.acceptsProfiles(TEST);
     }
 
     public static String[] getActiveProfiles() {
