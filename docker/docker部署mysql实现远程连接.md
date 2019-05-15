@@ -82,6 +82,20 @@
     mysql> FLUSH PRIVILEGES; # 刷新一下
     Query OK, 0 rows affected (0.06 sec)
     ```
+3. 在`mysql -u root -p`进入mysql的时候, 可能会花\出现这么个报错
+    - 不能连接本地mysql
+        ```
+        PS D:\98799\Desktop> docker exec -it dockermysql bash
+        root@3d485c4a484f:/# mysql -u root -p
+        Enter password:
+        ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+        root@3d485c4a484f:/# mysql -u root -p
+        Enter password:
+        ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+        ```
+    - 这是因为权限不足导致的, 相关issue[fails to mount volume `/var/log/mysql` ](https://github.com/docker-library/mysql/issues/146)
+    - 要权限就满足它: `chown 999:999 /var/run/mysqld/`
+    - 解决
 
 ## 远程连接
 
@@ -105,5 +119,5 @@
         +-----------+------------------+-----------------------+------------------------------------------------------------------------+
         5 rows in set (0.00 sec)
         ```
-2. 使用IDEA自带的数据库工具连接
+2. 使用IDEA自带的数据库工具连接(*idea因为是直接从maven下载最新的驱动,所以不会发生上一步密码的报错*)
     ![mysql](dockermysqlconnection.png)
