@@ -1,6 +1,8 @@
 package com.imckh.gitblog.shiro;
 
 import com.imckh.gitblog.model.User;
+import com.imckh.gitblog.service.RoleService;
+import com.imckh.gitblog.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -8,6 +10,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +20,11 @@ import java.util.Set;
  */
 @Log4j2
 public class ShiroRealm extends AuthorizingRealm {
-    private User testUser = User.builder().userName("imckh").password("0000").build();
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private RoleService roleService;
+
     /**
      * 获取用户角色和权限, 获取授权信息
      *
@@ -32,7 +39,7 @@ public class ShiroRealm extends AuthorizingRealm {
         String username = (String) SecurityUtils.getSubject().getPrincipal();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         // 从数据库获得该用户角色
-        String role = username.startsWith("i") ? "admin" : "user";
+        String role = roleService.getByUserName(username).getRole();
 
         Set<String> set = new HashSet<>();
         //需要将 role 封装到 Set 作为 info.setRoles() 的参数
@@ -60,13 +67,14 @@ public class ShiroRealm extends AuthorizingRealm {
         log.info("用户" + userName + "认证-----ShiroRealm.doGetAuthenticationInfo");
 
         // 从数据库获取对应用户名密码的用户
-        User user = User.builder().userName(userName).password(password).build();
+        User user = userService.getByUserName(userName);
 
         if (user == null) {
             throw new UnknownAccountException("用户名或密码错误！");
         }
-        if (!user.getPassword().equals(testUser.getPassword())) {
-            throw new IncorrectCredentialsException("用户名或密码错误！");
+        // FIXME 2019-05-16 23:38:58 没有加密
+        if (!password.equals(user.getPassword())) {
+            throw new IncorrectCredentialsException("用户名或密码错误！!");
         }
 
         return new SimpleAuthenticationInfo(token.getPrincipal(), password, getName());

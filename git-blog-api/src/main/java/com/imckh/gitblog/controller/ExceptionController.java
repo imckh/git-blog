@@ -34,4 +34,10 @@ public class ExceptionController {
         log.debug(ex.getMessage());
         return resultMap.fail().message(ex.getMessage());
     }
+
+    @ExceptionHandler({Exception.class})
+    public ResultMap handleException(Exception ex) {
+        log.debug(ex.getMessage());
+        return resultMap.fail().message("系统错误: " + ex.getMessage());
+    }
 }
