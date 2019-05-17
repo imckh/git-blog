@@ -2,8 +2,8 @@
 
 use maven package and dont skip test, spring-restdocs generated below
 
-[](error.png)
+![](error.png)
 
 but this is `index.html` content:
 
-[](html.png)
+![](html.png)
