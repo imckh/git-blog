@@ -34,7 +34,9 @@
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>2.0.0-RC.1</version>
+<!--                https://stackoverflow.com/questions/56092470/why-snippets-include-error-with-spring-restdocs-asciidoctor/56188728#56188728-->
+<!--                高版本不兼容, 使用1.5.8可以正确生成文档-->
+                <version>1.5.8</version>
 <!--                                <version>1.6.0</version>-->
                 <executions>
                     <execution>
