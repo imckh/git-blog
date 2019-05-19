@@ -58,4 +58,10 @@ INSERT INTO gitblog.role (id, role, permission) VALUES (1, 'user', 'normal');
 INSERT INTO gitblog.role (id, role, permission) VALUES (2, 'admin', 'vip');
 INSERT INTO gitblog.user (id, username, password, role_id, ban, create_datetime) VALUES (4, 'ckh', '0000', 2, '0', '2019-05-16 14:39:22');
 INSERT INTO gitblog.user (id, username, password, role_id, ban, create_datetime) VALUES (5, 'ckh2', '0000', 1, '0', '2019-05-16 14:39:42');
+<<<<<<< Updated upstream
 INSERT INTO gitblog.user (id, username, password, role_id, ban, create_datetime) VALUES (6, 'ckh3', '0000', 1, '0', '2017-05-16 14:40:02');
+=======
+INSERT INTO gitblog.user (id, username, password, role_id, ban, create_datetime) VALUES (6, 'ckh3', '0000', 1, '0', '2017-05-16 14:40:02');
+
+COMMIT;
+>>>>>>> Stashed changes
