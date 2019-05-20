@@ -1,4 +1,4 @@
-package com.imckh.gitblog.controller;
+package com.imckh.gitblog.api;
 
 import com.imckh.gitblog.model.http.ResultMap;
 import io.swagger.annotations.Api;

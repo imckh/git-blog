@@ -1,8 +1,9 @@
-package com.imckh.gitblog.controller;
+package com.imckh.gitblog.api;
 
 import com.imckh.gitblog.model.http.ResultMap;
 import io.swagger.annotations.Api;
 import lombok.extern.log4j.Log4j2;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +26,8 @@ public class AdminController {
     public AdminController(ResultMap resultMap) {
         this.resultMap = resultMap;
     }
+
+    @RequiresRoles("admin")
     @RequestMapping(value = "/getMessage", method = RequestMethod.GET)
     public ResultMap getMessage() {
         return resultMap.success().message("您拥有管理员权限，可以获得该接口的信息！");

@@ -24,6 +24,86 @@
             <artifactId>git-blog-service</artifactId>
             <version>${project.version}</version>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>com.imckh</groupId>
+            <artifactId>git-blog-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
+        <!--<dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <scope>test</scope>
+        </dependency>-->
+    </dependencies>
+<!-- 暂时不用
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                &lt;!&ndash;https://stackoverflow.com/questions/56092470/why-snippets-include-error-with-spring-restdocs-asciidoctor/56188728#56188728&ndash;&gt;
+                &lt;!&ndash;高版本不兼容, 使用1.5.8可以正确生成文档&ndash;&gt;
+                <version>1.5.8</version>
+                &lt;!&ndash;<version>1.6.0</version>&ndash;&gt;
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                            <sourceHighlighter>prettify</sourceHighlighter>
+                            <attributes>
+                                <toc>left</toc>
+                                <icons>font</icons>
+                                <sectanchors>true</sectanchors>
+                                &lt;!&ndash; set the idprefix to blank &ndash;&gt;
+                                <idprefix/>
+                            </attributes>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework.restdocs</groupId>
+                        <artifactId>spring-restdocs-asciidoctor</artifactId>
+                        <version>${spring-restdocs.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.outputDirectory}/static/docs
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>
+                                        ${project.build.directory}/generated-docs
+                                    </directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>-->
 </project>

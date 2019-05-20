@@ -53,13 +53,4 @@ public class RoleServiceImpl implements RoleService {
     public Role getByRoleName(String roleName) {
         return roleRepo.findOne(Example.of(Role.builder().role(roleName).build())).orElse(null);
     }
-
-    @Override
-    public Role getByUserName(String userName) {
-        User user = userService.getByUserName(userName);
-        if (user == null) {
-            return null;
-        }
-        return getById(user.getRoleId());
-    }
 }

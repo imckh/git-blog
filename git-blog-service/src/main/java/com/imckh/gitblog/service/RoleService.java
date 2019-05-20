@@ -21,6 +21,4 @@ public interface RoleService {
     List<Role> getAll();
 
     Role getByRoleName(String roleName);
-
-    Role getByUserName(String userName);
 }

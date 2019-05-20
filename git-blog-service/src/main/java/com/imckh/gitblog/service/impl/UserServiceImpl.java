@@ -1,8 +1,10 @@
 package com.imckh.gitblog.service.impl;
 
 import com.google.common.collect.Lists;
+import com.imckh.gitblog.model.Role;
 import com.imckh.gitblog.model.User;
 import com.imckh.gitblog.repo.UserRepo;
+import com.imckh.gitblog.service.RoleService;
 import com.imckh.gitblog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -23,6 +25,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private RoleService roleService;
 
     /**
      * 保存用户
@@ -67,5 +71,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getByUserName(String username) {
         return userRepo.findOne(Example.of(User.builder().username(username).build())).orElse(null);
+    }
+
+    @Override
+    public Role getRoleByUserName(String userName) {
+        User user = getByUserName(userName);
+        if (user == null) {
+            return null;
+        }
+        return roleService.getById(user.getRoleId());
     }
 }

@@ -35,6 +35,7 @@
         <springfox.version>2.9.2</springfox.version>
         <apache.httpcomponents.version>4.5.8</apache.httpcomponents.version>
         <shiro.version>1.4.1</shiro.version>
+        <java-jwt.version>3.8.0</java-jwt.version>
     </properties>
 
     <dependencies>
@@ -74,12 +75,20 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>${springboot.version}</version>
         </dependency>
+
         <!-- 权限管理-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-starter</artifactId>
             <version>${shiro.version}</version>
         </dependency>
+        <!--JWT支持-->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${java-jwt.version}</version>
+        </dependency>
+
         <!--hibernate & JPA 由于Spring boot默认已经集成了Hibernate, 所在我们只需在pom.xml引用jpa及mysql连接库-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -1,5 +1,6 @@
 package com.imckh.gitblog.service;
 
+import com.imckh.gitblog.model.Role;
 import com.imckh.gitblog.model.User;
 
 import java.math.BigDecimal;
@@ -21,4 +22,6 @@ public interface UserService {
     User getById(BigDecimal id);
 
     User getByUserName(String username);
+
+    Role getRoleByUserName(String userName);
 }

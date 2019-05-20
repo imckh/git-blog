@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {
         "com.imckh.gitblog.config",
-        "com.imckh.gitblog.controller",
+        "com.imckh.gitblog.api",
         "com.imckh.gitblog.service",
         "com.imckh.gitblog.util",
         "com.imckh.gitblog.model",
