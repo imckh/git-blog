@@ -80,14 +80,13 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized/无权限");
         Map<String, String> filterRuleMap = new LinkedHashMap<>();
 
-        // TODO 2019-05-20 23:08:14 添加 swagger2等静态资源等不需要验证的资源
+        // TODO 2019-05-20 23:08:14 添加 swagger2等静态资源等不需要验证的资源, 为什么本来就不需要验证?
         // 所有请求通过我们自己的JWT Filter
         filterRuleMap.put("/**", "jwt");
         // 访问 /unauthorized/** 不通过JWTFilter
         filterRuleMap.put("/unauthorized/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterRuleMap);
 
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterRuleMap);
         return shiroFilterFactoryBean;
     }
 
