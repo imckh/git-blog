@@ -18,14 +18,19 @@ import java.util.Date;
  */
 public class JWTUtil {
     /**
-     * 过期24h
+     * 过期24h * 7
      */
-    private static final long EXPIRE_TIME = 1000 * 60 * 60 * 24;
+    private static final long EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7;
     /**
      * 密钥
      */
-    private static final String SECRET = "GIT-BLOG_BEST";
+    private static final String SECRET = "GIT-BLOG-BEST";
 
+    /**
+     * 使用usernamer字段 创建token
+     * @param username
+     * @return
+     */
     public static String createToken(String username) {
         try {
             Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
@@ -64,6 +69,11 @@ public class JWTUtil {
         }
     }
 
+    /**
+     * 得到token中的username字段的值
+     * @param token
+     * @return
+     */
     public static String getUsername(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);

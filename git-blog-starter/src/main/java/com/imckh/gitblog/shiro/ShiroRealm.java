@@ -109,9 +109,9 @@ public class ShiroRealm extends AuthorizingRealm {
             throw new AuthenticationException("用户不存在！");
         }
 
-        if (ISysConst.IND_YES.equals(user.getBan())) {
+        /*if (ISysConst.IND_YES.equals(user.getBan())) {
             throw new IncorrectCredentialsException("该用户已被封号！");
-        }
+        }*/
 
         return new SimpleAuthenticationInfo(token, token, getName());
     }

@@ -17,7 +17,7 @@ spring:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: update # Hibernate ddl auto (create, create-drop, update)
+      ddl-auto: create-drop # Hibernate ddl auto (create, create-drop, update)
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl

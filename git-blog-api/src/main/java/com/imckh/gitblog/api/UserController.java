@@ -1,5 +1,6 @@
 package com.imckh.gitblog.api;
 
+import com.imckh.gitblog.model.User;
 import com.imckh.gitblog.model.http.ResultMap;
 import com.imckh.gitblog.service.UserService;
 import io.swagger.annotations.Api;
@@ -56,5 +57,11 @@ public class UserController {
     @RequiresPermissions("vip")
     public ResultMap getVipMessage() {
         return resultMap.success().code(200).message("成功获得 vip 信息！");
+    }
+
+    @GetMapping("/register")
+    @RequiresRoles(logical = Logical.OR, value = {"guest"})
+    public User register(User user) {
+        return new User();
     }
 }
